@@ -5,6 +5,7 @@ import { Videos } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 
 const Feed = () => {
+  const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
   const [selectedCategory, setSelectedCategory] = useState("New");
   const [videos, setVideos] = useState(null);
 
@@ -12,7 +13,7 @@ const Feed = () => {
     setVideos(null);
 
     fetchFromAPI(
-      `videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyB8thQDPF7Qu9AeNYk1RxvBAmOJ97mSYgI`
+      `videos?part=snippet&chart=mostPopular&maxResults=25&key=${API_KEY}`
     ).then((data) => setVideos(data.items));
   }, [selectedCategory]);
 
