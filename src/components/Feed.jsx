@@ -13,7 +13,7 @@ const Feed = () => {
     setVideos(null);
 
     fetchFromAPI(
-      `videos?part=snippet&chart=mostPopular&maxResults=25&key=${API_KEY}`
+      `videos?part=snippet&chart=mostPopular&regionCode=KR&maxResults=25&key=${API_KEY}`
     ).then((data) => setVideos(data.items));
   }, [selectedCategory]);
 
