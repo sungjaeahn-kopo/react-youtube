@@ -5,7 +5,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 const VideoCard = ({
   video: {
-    id: { id },
+    id,
     snippet,
   },
 }) => (
