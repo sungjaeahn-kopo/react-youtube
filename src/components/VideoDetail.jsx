@@ -17,7 +17,6 @@ const VideoDetail = () => {
   return (
     <Box>
       <Stack>
-        <div>VideoDetail</div>
         <div>${videos}</div>
       </Stack>
     </Box>
