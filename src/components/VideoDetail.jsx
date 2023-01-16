@@ -11,6 +11,7 @@ const VideoDetail = () => {
   const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
   const [videos, setVideos] = useState(null);
   const [videoDetail, setVideoDetail] = useState(null);
+  const [relatedVideo, setRelatedVideo] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -21,14 +22,14 @@ const VideoDetail = () => {
     fetchFromAPI(
       `videos?part=snippet&id=${id}&regionCode=KR&maxResults=25&key=${API_KEY}`
     ).then((data) => setVideos(data.items[0]));
+
+    fetchFromAPI(
+      `search?part=snippet&type=video&relatedToVideoId=${id}&regionCode=KR&maxResults=25&key=${API_KEY}`
+    ).then((data) => setRelatedVideo(data.items));
   }, [id]);
 
   if (!videos?.snippet) return <Loader />;
 
-  console.log("videos :::new::: ", videos.statistics);
-  console.log("videos :::1::: ", videos);
-  console.log("videos :::1::: ", videos.snippet);
-  console.log("videos :::1::: ", videos.snippet.title);
   // 특정 영상정보 선언
   const {
     snippet: { title, channelId, channelTitle },
@@ -86,7 +87,7 @@ const VideoDetail = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Videos videos={videos} direction="column" />
+          <Videos videos={relatedVideo} direction="column" />
         </Box>
       </Stack>
     </Box>

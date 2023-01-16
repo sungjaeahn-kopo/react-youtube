@@ -3,12 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
-const VideoCard = ({
-  video: {
-    id,
-    snippet,
-  },
-}) => (
+const VideoCard = ({ video: { id, snippet } }) => (
   <Card
     sx={{
       width: { xs: "100%", sm: "358px", md: "320px" },
@@ -25,7 +20,7 @@ const VideoCard = ({
     </Link>
     <CardContent sx={{ backgroundColor: "#1E1E1E", height: "106px" }}>
       <Typography variant="subtitle1" fontWeight="bold" color="#FFF">
-        {snippet?.localized.title.slice(0, 60) || ""}
+        {snippet?.localized?.title.slice(0, 60) || ""}
       </Typography>
       <Typography variant="subtitle2" color="gray">
         {snippet?.channelTitle || ""}
