@@ -33,7 +33,7 @@ const Feed = () => {
         <Typography
           className="copyright"
           variant="body2"
-          sx={{ mt: 2, color: "#fff" }}
+          sx={{ mt: 1.5, color: "#fff" }}
         >
           Copyright @ 2023
         </Typography>

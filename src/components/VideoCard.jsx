@@ -11,7 +11,7 @@ const VideoCard = ({ video: { id, snippet } }) => (
       borderRadius: 0,
     }}
   >
-    <Link to={id ? `/video/${id}` : `/video`}>
+    <Link to={id?.videoId ? `/video/${id.videoId}` : `/video/${id}`}>
       <CardMedia
         image={snippet?.thumbnails?.high?.url || ""}
         alt={snippet?.channelTitle}
@@ -19,13 +19,19 @@ const VideoCard = ({ video: { id, snippet } }) => (
       />
     </Link>
     <CardContent sx={{ backgroundColor: "#1E1E1E", height: "106px" }}>
-      <Typography variant="subtitle1" fontWeight="bold" color="#FFF">
-        {snippet?.localized?.title.slice(0, 60) || ""}
-      </Typography>
-      <Typography variant="subtitle2" color="gray">
-        {snippet?.channelTitle || ""}
-        <CheckCircleIcon sx={{ fontSize: "12px", color: "gray", ml: "5px" }} />
-      </Typography>
+      <Link to={id?.videoId ? `/video/${id.videoId}` : `/video/${id}`}>
+        <Typography variant="subtitle1" fontWeight="bold" color="#FFF">
+          {snippet?.title.slice(0, 60) || ""}
+        </Typography>
+      </Link>
+      <Link to={snippet?.channelId ? `/channel/${snippet?.channelId}` : ""}>
+        <Typography variant="subtitle2" color="gray">
+          {snippet?.channelTitle || ""}
+          <CheckCircleIcon
+            sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
+          />
+        </Typography>
+      </Link>
     </CardContent>
   </Card>
 );
